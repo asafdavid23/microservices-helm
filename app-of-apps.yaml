@@ -1,0 +1,18 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: backend-api
+  namespace: argocd
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  destination:
+    namespace: argocd
+    server: https://kubernetes.default.svc
+  project: microservices
+  source:
+    path: apps
+    repoURL: https://github.com/asafdavid23/microservices-helm
+    targetRevision: HEAD
+  syncPolicy:
+    automated: {}

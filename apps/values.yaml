@@ -1,0 +1,13 @@
+# Default values for apps
+
+## Determine the order of rollout
+## - The sync wave "-1" will be running before everything else
+## - Any wave can be used multiple times to combine apps
+## Docs: https://argoproj.github.io/argo-cd/user-guide/sync-waves/
+spec:
+  destination:
+    server: https://kubernetes.default.svc
+  source:
+    repoURL: https://github.com/asafdavid23/microservices-helm
+    targetRevision: HEAD
+  project: microservices # each cluster should have its own `AppProject`
